@@ -1,0 +1,73 @@
+<%= form_for @order, :html => { :class => "form-horizontal order" } do |f| %>
+
+    <% if @order.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :titel, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :titel, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:titel]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :order, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :order, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:order]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:address]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :date, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:date]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:price]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :postal, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :postal, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:postal]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :customer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :customer, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:customer]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.terug")),
+            orders_path, :class => 'btn btn-default' %>
+
+<% end %>
